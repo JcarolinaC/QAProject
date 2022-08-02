@@ -1,0 +1,646 @@
+{
+	"info": {
+		"_postman_id": "46ba9d28-cc7d-4739-bb37-821542757ffc",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18114703"
+	},
+	"item": [
+		{
+			"name": "PetAllAbout",
+			"item": [
+				{
+					"name": "addNewpet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var requestBody = JSON.parse(request.data);\r",
+									"pm.environment.set(\"id\", requestBody.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{$randomInt}}\",\r\n  \"category\": {\r\n    \"id\": \"{{$randomInt}}\",\r\n    \"name\": \"{{$randomFirstName}}\"\r\n  },\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"photoUrls\": [\r\n    \"{{$randomAnimalsImage}}\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": \"{{$randomInt}}\",\r\n      \"name\": \"{{$randomFirstName}}\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/pet",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadImage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "file to upload",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "additionalMetadata",
+									"value": "additionalMetadata",
+									"description": "Additional data to pass to server",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/pet/m12/uploadImage",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"m12",
+								"uploadImage"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{$randomInt}}\",\r\n  \"category\": {\r\n    \"id\": \"{{$randomInt}}\",\r\n    \"name\": \"{{$randomFirstName}}\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"{{$randomAnimalsImage}}\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": \"{{$randomInt}}\",\r\n      \"name\": \"{{$randomFirstName}}\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/pet",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findbyStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/pet/findByStatus?status=pending",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available",
+									"description": "Status values that need to be considered for filter",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"description": "Status values that need to be considered for filter"
+								},
+								{
+									"key": "status",
+									"value": "sold",
+									"description": "Status values that need to be considered for filter",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findbyId",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/pet/1",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatesFormData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/pet/1",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URLPetStore}}/pet/1",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"1"
+							],
+							"query": [
+								{
+									"key": "petId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Successful request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "placeOrder",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 10,\r\n  \"petId\": 0,\r\n  \"quantity\": 0,\r\n  \"shipDate\": \"2022-07-25T21:25:43.483Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/store/order",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findPurchase",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/store/order/{{idPlaceOrder}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"order",
+								"{{idPlaceOrder}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePurchase",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/store/order/{orderId}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"order",
+								"{orderId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inventoriesByStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/store/inventory",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "createListArray",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": {{$randomInt}},\r\n    \"username\": \"\",\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user/createWithArray",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": \"{{$randomInt}}\",\r\n    \"username\": \" \",\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"phone\": \"string\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user/createWithList",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"createWithList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var requestBody = JSON.parse(request.data);\r",
+									"pm.environment.set(\"username\", requestBody.username);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{$randomInt}}\",\r\n  \"username\": \"{{$randomUserName}}\",\r\n  \"firstName\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"{{$randomPassword}}\",\r\n  \"phone\": \"{{$randomPhoneNumber}}\",\r\n  \"userStatus\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"username\": \"{{$randomFirstName}}\",\r\n  \"firstName\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"{{$randomPassword}}\",\r\n  \"phone\": \"{{$randomPhoneNumber}}\",\r\n  \"userStatus\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logsUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/login",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logsOut",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
