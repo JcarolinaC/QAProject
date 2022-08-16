@@ -23,3 +23,17 @@ variable: idPlaceOrder
 type: default
 initial value:
 current value: reqBody.id
+
+#System Environment Variables
+
+**** java version "1.8.0_202"
+**** Apache Maven 3.8.6
+**** Gradle 7.5
+     Kotlin:       1.6.21
+     Groovy:       3.0.10
+**** Karate version: 0.9.6
+
+IDE
+
+Intellij IDEA
+
