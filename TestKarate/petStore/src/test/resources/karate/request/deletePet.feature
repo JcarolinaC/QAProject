@@ -10,7 +10,7 @@ Feature: Delete a pet
 
     * def responsePostAddPet = read('classpath:karate/request/responsePostAddPet.json')
 
-    Given path 'pet','#id'
+    Given path 'pet','1'
     When method Delete
     Then status 200
     And match response == {code: '#number',type: '#string',message: '#string'}|

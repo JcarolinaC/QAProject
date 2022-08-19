@@ -25,7 +25,7 @@ Feature: Add new pet with a POST
     Then status 415
     And match response == <expected>
     Examples:
-      | id                             | expected                                             |
-      | "adsdende"                     | {code=#number, type=#string, message=#string         |
-      | 123456789012345678903214569874 | {code=#number, type=#string, message=#string         |
-      |                                | {code: '#number',type: '#string',message: '#string'} |
+      | id                             | expected  |
+      | "adsdende"                     | '#string' |
+      | 123456789012345678903214569874 | '#string' |
+      | " "                            | '#string' |
