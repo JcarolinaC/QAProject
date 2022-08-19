@@ -8,7 +8,7 @@ Feature: Add new pet with a POST
 
   Scenario: Add a new pet post method
 
-    * def responsePostAddPet = read('classpath:karate/request/responsePostAddPet.json')
+    * def responsePostAddPet = read('classpath:karate/request/addPetData.json')
 
     Given path 'pet'
     And def jsonBody = read('classpath:karate/request/addPetData.json')
@@ -20,6 +20,7 @@ Feature: Add new pet with a POST
   Scenario Outline: Add a pet with a invalid data
 
     Given path 'pet'
+    And request jsonBody
     And method post
     When params <id>
     Then status 415
