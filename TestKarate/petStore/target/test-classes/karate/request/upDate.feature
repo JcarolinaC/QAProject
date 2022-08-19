@@ -7,5 +7,3 @@ Feature: Up Date a Pet
     * url url
 
   Scenario: Up date a pet
-
-  Scenario: Up date a pet with a invalidate data

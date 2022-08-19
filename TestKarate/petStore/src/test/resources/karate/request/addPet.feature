@@ -6,13 +6,26 @@ Feature: Add new pet with a POST
   Background: consume service
     * url url
 
-    Scenario: Add a new pet post method
+  Scenario: Add a new pet post method
 
-      * def responsePostAddPet = read('classpath:karate/request/responsePostAddPet.json')
+    * def responsePostAddPet = read('classpath:karate/request/responsePostAddPet.json')
 
-      Given path 'pet'
-      And def jsonBody = read('classpath:karate/request/addPetData.json')
-      And request jsonBody
-      When method post
-      Then status 200
-      And match  response == responsePostAddPet
+    Given path 'pet'
+    And def jsonBody = read('classpath:karate/request/addPetData.json')
+    And request jsonBody
+    When method post
+    Then status 200
+    And match  response == responsePostAddPet
+
+  Scenario Outline: Add a pet with a invalid data
+
+    Given path 'pet'
+    And method post
+    When params <id>
+    Then status 415
+    And match response == <expected>
+    Examples:
+      | id                             | expected                                             |
+      | "adsdende"                     | {code: '#number',type: '#string',message: '#string'} |
+      | 123456789012345678903214569874 | {code: '#number',type: '#string',message: '#string'} |
+      |                                | {code: '#number',type: '#string',message: '#string'} |
