@@ -20,13 +20,12 @@ Feature: Add new pet with a POST
   Scenario Outline: Add a pet with a invalid data
 
     Given path 'pet'
-    And request jsonBody
-    And method post
-    When params <id>
+    And request <id>
+    When method post
     Then status 415
     And match response == <expected>
     Examples:
       | id                             | expected                                             |
-      | "adsdende"                     | {code: '#number',type: '#string',message: '#string'} |
-      | 123456789012345678903214569874 | {code: '#number',type: '#string',message: '#string'} |
+      | "adsdende"                     | {code=#number, type=#string, message=#string         |
+      | 123456789012345678903214569874 | {code=#number, type=#string, message=#string         |
       |                                | {code: '#number',type: '#string',message: '#string'} |
