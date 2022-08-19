@@ -29,5 +29,5 @@ Feature: Up Date a Pet PUT
     Examples:
       | id    | code | expected  |
       | "tom" | 415  | '#string' |
-      | "*/"  | 404  | '#string' |
-      | " "      | 405  | '#string' |
+      | "*/"  | 415  | '#string' |
+      | " "   | 415  | '#string' |

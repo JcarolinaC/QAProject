@@ -7,9 +7,8 @@ Feature: find a pet by id
     * url url
 
   Scenario: Find a Pet By Id
-    * def petId = '1'
 
-    Given path 'pet',petId
+    Given path 'pet','1'
     When method GET
     Then status 200
     And match response == read('classpath:karate/request/responsePostAddPet.json')
