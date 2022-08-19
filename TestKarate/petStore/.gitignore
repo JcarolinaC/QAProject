@@ -1,0 +1,6 @@
+##ignore .idea
+ #.idea
+ ##ignore target
+ #target
+ ##ignore karate-properties.json
+ #karate-properties.json
