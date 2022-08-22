@@ -1,0 +1,14 @@
+#ignore .idea
+ .idea
+ #ignore target
+ target
+ #ignore karate-properties.json
+ karate-properties.json
+ #ignore karate-json.txt
+ karate-json.txt
+ #ignore package.json
+ ignore package.json
+ #ignore package-lock.json
+ ignore package-lock.json
+ #ignore node_modules
+ ignore node-modules
