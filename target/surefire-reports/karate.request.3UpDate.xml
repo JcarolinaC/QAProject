@@ -1,0 +1,78 @@
+<testsuite failures="0" name="karate/request/3UpDate.feature" skipped="0" tests="4" time="1.31547">
+  <testcase classname="karate.request.3UpDate" name="Up date a pet method PUT" time="0.346371">
+    <system-out>* url url ................................................................. passed
+* def requestUpdate = {"id": "#(id)", "category": {"id": "#(idCategory)", "name": "#(nameCategory)"},"name": "#(name)","photoUrls": ["#(photoUrls)"],"tags": [{"id": "#(idTags)","name": "#(nameTags)"}],"status": "#(status)"} . passed
+* def responseUpDate = read('classpath:karate/request/responseUpDate.json') . passed
+Given path 'pet' .......................................................... passed
+And request requestUpdate ................................................. passed
+When method put ........................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responseUpDate ..................................... passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.3UpDate" name="Up date a pet with a invalidate data" time="0.326529">
+    <system-out>* url url ................................................................. passed
+* def requestUpdate = {"id": "#(id)", "category": {"id": "#(idCategory)", "name": "#(nameCategory)"},"name": "#(name)","photoUrls": ["#(photoUrls)"],"tags": [{"id": "#(idTags)","name": "#(nameTags)"}],"status": "#(status)"} . passed
+* def responseUpDate = read('classpath:karate/request/responseUpDate.json') . passed
+Given path 'pet' .......................................................... passed
+And request requestUpdate ................................................. passed
+When method put ........................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responseUpDate ..................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "tom" ......................................................... passed
+When method put ........................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.3UpDate" name="Up date a pet with a invalidate data" time="0.323971">
+    <system-out>* url url ................................................................. passed
+* def requestUpdate = {"id": "#(id)", "category": {"id": "#(idCategory)", "name": "#(nameCategory)"},"name": "#(name)","photoUrls": ["#(photoUrls)"],"tags": [{"id": "#(idTags)","name": "#(nameTags)"}],"status": "#(status)"} . passed
+* def responseUpDate = read('classpath:karate/request/responseUpDate.json') . passed
+Given path 'pet' .......................................................... passed
+And request requestUpdate ................................................. passed
+When method put ........................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responseUpDate ..................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "tom" ......................................................... passed
+When method put ........................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "*/" .......................................................... passed
+When method put ........................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.3UpDate" name="Up date a pet with a invalidate data" time="0.318599">
+    <system-out>* url url ................................................................. passed
+* def requestUpdate = {"id": "#(id)", "category": {"id": "#(idCategory)", "name": "#(nameCategory)"},"name": "#(name)","photoUrls": ["#(photoUrls)"],"tags": [{"id": "#(idTags)","name": "#(nameTags)"}],"status": "#(status)"} . passed
+* def responseUpDate = read('classpath:karate/request/responseUpDate.json') . passed
+Given path 'pet' .......................................................... passed
+And request requestUpdate ................................................. passed
+When method put ........................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responseUpDate ..................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "tom" ......................................................... passed
+When method put ........................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "*/" .......................................................... passed
+When method put ........................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request " " ........................................................... passed
+When method put ........................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed</system-out>
+  </testcase>
+</testsuite>

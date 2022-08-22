@@ -1,0 +1,78 @@
+<testsuite failures="0" name="karate/request/1AddPet.feature" skipped="0" tests="4" time="2.638826">
+  <testcase classname="karate.request.1AddPet" name="Add a new pet post method" time="1.501846">
+    <system-out>* url url ................................................................. passed
+* def responsePostAddPet = read('classpath:karate/request/addPetData.json') . passed
+Given path 'pet' .......................................................... passed
+And def jsonBody = read('classpath:karate/request/addPetData.json') ....... passed
+And request jsonBody ...................................................... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responsePostAddPet ................................. passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.1AddPet" name="Add a pet with a invalid data" time="0.466571">
+    <system-out>* url url ................................................................. passed
+* def responsePostAddPet = read('classpath:karate/request/addPetData.json') . passed
+Given path 'pet' .......................................................... passed
+And def jsonBody = read('classpath:karate/request/addPetData.json') ....... passed
+And request jsonBody ...................................................... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responsePostAddPet ................................. passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "adsdende" .................................................... passed
+When method post .......................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.1AddPet" name="Add a pet with a invalid data" time="0.338658">
+    <system-out>* url url ................................................................. passed
+* def responsePostAddPet = read('classpath:karate/request/addPetData.json') . passed
+Given path 'pet' .......................................................... passed
+And def jsonBody = read('classpath:karate/request/addPetData.json') ....... passed
+And request jsonBody ...................................................... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responsePostAddPet ................................. passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "adsdende" .................................................... passed
+When method post .......................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request 123456789012345678903214569874 ................................ passed
+When method post .......................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.1AddPet" name="Add a pet with a invalid data" time="0.331751">
+    <system-out>* url url ................................................................. passed
+* def responsePostAddPet = read('classpath:karate/request/addPetData.json') . passed
+Given path 'pet' .......................................................... passed
+And def jsonBody = read('classpath:karate/request/addPetData.json') ....... passed
+And request jsonBody ...................................................... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... passed
+And match  response == responsePostAddPet ................................. passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request "adsdende" .................................................... passed
+When method post .......................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request 123456789012345678903214569874 ................................ passed
+When method post .......................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed
+* url url ................................................................. passed
+Given path 'pet' .......................................................... passed
+And request " " ........................................................... passed
+When method post .......................................................... passed
+Then status 415 ........................................................... passed
+And match response == '#string' ........................................... passed</system-out>
+  </testcase>
+</testsuite>

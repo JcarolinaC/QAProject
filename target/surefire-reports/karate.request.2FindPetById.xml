@@ -1,0 +1,72 @@
+<testsuite failures="0" name="karate/request/2FindPetById.feature" skipped="0" tests="4" time="1.31953">
+  <testcase classname="karate.request.2FindPetById" name="Find a Pet By Id" time="0.337911">
+    <system-out>* url url ................................................................. passed
+Given path 'pet','1' ...................................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+And match response == read('classpath:karate/request/responsePostAddPet.json') . passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.2FindPetById" name="Find a pet with a Get method" time="0.320806">
+    <system-out>* url url ................................................................. passed
+Given path 'pet','1' ...................................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+And match response == read('classpath:karate/request/responsePostAddPet.json') . passed
+* url url ................................................................. passed
+* def idPet = '701' ....................................................... passed
+* def responseError = read('classpath:karate/request/responseErrorGetFind.json') . passed
+Given path 'pet',idPet .................................................... passed
+When method GET ........................................................... passed
+Then status 404 ........................................................... passed
+And match response == responseError ....................................... passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.2FindPetById" name="Find a pet with a Get method" time="0.317379">
+    <system-out>* url url ................................................................. passed
+Given path 'pet','1' ...................................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+And match response == read('classpath:karate/request/responsePostAddPet.json') . passed
+* url url ................................................................. passed
+* def idPet = '701' ....................................................... passed
+* def responseError = read('classpath:karate/request/responseErrorGetFind.json') . passed
+Given path 'pet',idPet .................................................... passed
+When method GET ........................................................... passed
+Then status 404 ........................................................... passed
+And match response == responseError ....................................... passed
+* url url ................................................................. passed
+* def idPet = '187898' .................................................... passed
+* def responseError = read('classpath:karate/request/responseErrorGetFind.json') . passed
+Given path 'pet',idPet .................................................... passed
+When method GET ........................................................... passed
+Then status 404 ........................................................... passed
+And match response == responseError ....................................... passed</system-out>
+  </testcase>
+  <testcase classname="karate.request.2FindPetById" name="Find a pet with a Get method" time="0.343434">
+    <system-out>* url url ................................................................. passed
+Given path 'pet','1' ...................................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+And match response == read('classpath:karate/request/responsePostAddPet.json') . passed
+* url url ................................................................. passed
+* def idPet = '701' ....................................................... passed
+* def responseError = read('classpath:karate/request/responseErrorGetFind.json') . passed
+Given path 'pet',idPet .................................................... passed
+When method GET ........................................................... passed
+Then status 404 ........................................................... passed
+And match response == responseError ....................................... passed
+* url url ................................................................. passed
+* def idPet = '187898' .................................................... passed
+* def responseError = read('classpath:karate/request/responseErrorGetFind.json') . passed
+Given path 'pet',idPet .................................................... passed
+When method GET ........................................................... passed
+Then status 404 ........................................................... passed
+And match response == responseError ....................................... passed
+* url url ................................................................. passed
+* def idPet = 'gainsaid' .................................................. passed
+* def responseError = read('classpath:karate/request/responseErrorGetFind.json') . passed
+Given path 'pet',idPet .................................................... passed
+When method GET ........................................................... passed
+Then status 404 ........................................................... passed
+And match response == responseError ....................................... passed</system-out>
+  </testcase>
+</testsuite>
