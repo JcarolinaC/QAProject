@@ -1,4 +1,4 @@
-@first
+@add
 Feature: Add new pet with a POST
   As QA automation
   I want to add a new pet

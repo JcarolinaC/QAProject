@@ -1,4 +1,4 @@
-@third
+@upDate
 Feature: Up Date a Pet PUT
   As QA automation
   I want to Up date a pet

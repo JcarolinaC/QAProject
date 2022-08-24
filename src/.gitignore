@@ -1,7 +1,7 @@
 #ignore .idea
- *.idea/
+ .idea
  #ignore target
- *target/
+ target
  #ignore karate-properties.json
  karate-properties.json
  #ignore karate-json.txt

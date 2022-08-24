@@ -1,7 +1,7 @@
 package karate.request.AddPet;
-import com.intuit.karate.KarateOptions;
+
 import com.intuit.karate.junit5.Karate;
-@KarateOptions(tags = {"@first"})
+
 public class AddPet {
 
     @Karate.Test
