@@ -1,0 +1,13 @@
+{
+  "dev": {
+    "url": "https://petstore.swagger.io/v2/",
+    "id": 84,
+    "name": "tom",
+    "idCategory": 3,
+    "idTags": 6,
+    "nameCategory": "Boxer",
+    "photoUrls": "doggy.jpj",
+    "nameTags": "dog",
+    "status": "sold"
+  }
+}
