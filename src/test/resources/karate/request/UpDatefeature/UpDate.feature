@@ -1,3 +1,4 @@
+@third
 Feature: Up Date a Pet PUT
   As QA automation
   I want to Up date a pet
@@ -8,7 +9,7 @@ Feature: Up Date a Pet PUT
 
   Scenario: Up date a pet method PUT
     * def requestUpdate = {"id": "#(id)", "category": {"id": "#(idCategory)", "name": "#(nameCategory)"},"name": "#(name)","photoUrls": ["#(photoUrls)"],"tags": [{"id": "#(idTags)","name": "#(nameTags)"}],"status": "#(status)"}
-    * def responseUpDate = read('classpath:karate/request/responseUpDate.json')
+    * def responseUpDate = read('classpath:karate/request/UpDatefeature/requestUpDate.json')
 
     Given path 'pet'
     And request requestUpdate

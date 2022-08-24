@@ -1,3 +1,4 @@
+@fourth
 Feature: Delete a pet
   As QA automation
   I want to delete a pet
@@ -8,9 +9,9 @@ Feature: Delete a pet
 
   Scenario: Delete a pet a Id
 
-    * def responsePostAddPet = read('classpath:karate/request/responsePostAddPet.json')
+    * def responsePostAddPet = read('classpath:karate/request/AddPetFeature/responsePostAddPet.json')
 
-    Given path 'pet','1'
+    Given path 'pet','123'
     When method Delete
     Then status 200
     And match response == {code: '#number',type: '#string',message: '#string'}|

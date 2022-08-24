@@ -1,3 +1,4 @@
+@first
 Feature: Add new pet with a POST
   As QA automation
   I want to add a new pet
@@ -8,10 +9,10 @@ Feature: Add new pet with a POST
 
   Scenario: Add a new pet post method
 
-    * def responsePostAddPet = read('classpath:karate/request/responsePostAddPet.json')
+    * def responsePostAddPet = read('classpath:src/test/resources/karate/request/AddPetFeature/responsePostAddPet.json')
 
     Given path 'pet'
-    And def jsonBody = read('classpath:karate/request/addPetData.json')
+    And def jsonBody = read('classpath:karate/request/AddPetFeature/addPetData.json')
     And request jsonBody
     When method post
     Then status 200
