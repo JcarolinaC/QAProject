@@ -1,4 +1,4 @@
-@fourth
+@delete
 Feature: Delete a pet
   As QA automation
   I want to delete a pet
