@@ -1,0 +1,18 @@
+{
+  "id": 692 ,
+  "category": {
+    "id": 12,
+    "name": " Tom "
+  },
+  "name": "dog",
+  "photoUrls": [
+    "dog.jpg"
+  ],
+  "tags": [
+    {
+      "id": 11,
+      "name": "perritos lindos"
+    }
+  ],
+  "status": "available"
+}
