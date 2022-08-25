@@ -1,0 +1,730 @@
+{
+	"info": {
+		"_postman_id": "46ba9d28-cc7d-4739-bb37-821542757ffc",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18114703"
+	},
+	"item": [
+		{
+			"name": "PetAllAbout",
+			"item": [
+				{
+					"name": "addNewpet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var requestBody = JSON.parse(request.data);\r",
+									"pm.environment.set(\"id\", requestBody.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{$randomInt}}\",\r\n  \"category\": {\r\n    \"id\": \"{{$randomInt}}\",\r\n    \"name\": \"{{$randomFirstName}}\"\r\n  },\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"photoUrls\": [\r\n    \"{{$randomAnimalsImage}}\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": \"{{$randomInt}}\",\r\n      \"name\": \"{{$randomFirstName}}\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/pet",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadImage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "file to upload",
+									"type": "file",
+									"src": "/C:/Users/Estudio/Pictures/dog-pet-store-logo-simple-style-vector-23042356.jpg"
+								},
+								{
+									"key": "additionalMetadata",
+									"value": "additionalMetadata",
+									"description": "Additional data to pass to server",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/pet/{{id}}/uploadImage",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"{{id}}",
+								"uploadImage"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":\"{{$randomInt}}\",\r\n  \"category\": {\r\n    \"id\": \"{{$randomInt}}\",\r\n    \"name\": \"{{$randomFirstName}}\", \r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"{{$randomAnimalsImage}}\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": \"{{$randomInt}}\",\r\n      \"name\": \"{{$randomFirstName}}\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/pet",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findbyStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/pet/findByStatus?status=available&status=pending",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available",
+									"description": "Status values that need to be considered for filter"
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"description": "Status values that need to be considered for filter"
+								},
+								{
+									"key": "status",
+									"value": "sold",
+									"description": "Status values that need to be considered for filter",
+									"disabled": true
+								},
+								{
+									"key": "one",
+									"value": "is",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findbyId",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/pet/{{id}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatesFormData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Updated name of the pet",
+									"value": "tom",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "Updated status of the pet",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/pet/{{id}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URLPetStore}}/pet/{{id}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"pet",
+								"{{id}}"
+							],
+							"query": [
+								{
+									"key": "petId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Successful request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "placeOrder",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{$randomNumber}}\",\r\n  \"petId\": \"\",\r\n  \"quantity\": 0,\r\n  \"shipDate\": \"2022-07-25T21:25:43.483Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/store/order",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findPurchase",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/store/order/{{id}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"order",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePurchase",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/store/order/101",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"order",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inventoriesByStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/store/inventory",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"store",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "createListArray",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": {{$randomInt}},\r\n    \"username\": \"\",\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user/createWithArray",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": \"{{$randomInt}}\",\r\n    \"username\": \" \",\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"phone\": \"string\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user/createWithList",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"createWithList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"var requestBody = JSON.parse(request.data);\r",
+									"\r",
+									"//aca guardo los valores\r",
+									"if(pm.response.to.have.status(200)){//le decimos que nos guarde los datos con status 200 si estan mal no los guarda con este if \r",
+									"pm.environment.set(\"id\",requestBody.id);\r",
+									"pm.environment.set(\"username\", requestBody.username);\r",
+									"pm.environment.set(\"password\", requestBody.password);\r",
+									"pm.environment.set(\"email\",requestBody.email);\r",
+									"pm.environment.set(\"userStatus\",requestBody.userStatus);\r",
+									"pm.environment.set(\"phone\",requestBody.phone);\r",
+									"} \r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.expect(requestBody.id).to.eql(jsonData.message);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{$randomInt}}\",\r\n  \"username\": \"{{$randomUserName}}\",\r\n  \"firstName\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"{{$randomPassword}}\",\r\n  \"phone\": \"{{$randomPhoneNumber}}\",\r\n  \"userStatus\": \"{{$randomInt}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json(); //variable para guardar el response \r",
+									"//aca tenemos las variables que vamos a comparar con el response\r",
+									"pm.test(\"Validation body\", ()=>{   \r",
+									"pm.expect(pm.environment.get(\"id\").to.eql(jsonData.id));\r",
+									"pm.expect(pm.environment.get(\"username\").to.eql(jsonData.username));\r",
+									"pm.expect(pm.environment.get(\"password\").to.eql(jsonData.password));\r",
+									"pm.expect(pm.environment.get(\"email\").to.eql(jsonData.email));\r",
+									"pm.expect(pm.environment.get(\"userStatus\").to.eql(jsonData.userStatus));\r",
+									"pm.expect(pm.environment.get(\"phone\").to.eql(jsonData.phone));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"username\": \"{{$randomFirstName}}\",\r\n  \"firstName\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"{{$randomPassword}}\",\r\n  \"phone\": \"{{$randomPhoneNumber}}\",\r\n  \"userStatus\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logsUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/login",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logsOut",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URLPetStore}}/user/{{username}}",
+							"host": [
+								"{{URLPetStore}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
