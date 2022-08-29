@@ -27,6 +27,6 @@ Feature: Add new pet with a POST
     And match response == <expected>
     Examples:
       | id                             | expected  |
-      | "adsdende"                     | '#string' |
+      | "adsdende"                     |'#string' |
       | 123456789012345678903214569874 | '#string' |
       | " "                            | '#string' |
