@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ignore .idea
+ *.idea/
+ #ignore target
+ *target/
+ #ignore karate-properties.json
+ karate-properties.json
+ #ignore karate-json.txt
+ karate-json.txt
+ #ignore package.json
+ ignore package.json
+ #ignore package-lock.json
+ ignore package-lock.json
+ #ignore node_modules
+ ignore node-modules
+=======
+=======
+>>>>>>> 0b4874bc29a3d4fffbc1497da991e92e3d82af5d
 # Compiled class file
 *.class
 
@@ -28,3 +47,7 @@ hs_err_pid*
 
 #target
 target
+<<<<<<< HEAD
+>>>>>>> main
+=======
+>>>>>>> 0b4874bc29a3d4fffbc1497da991e92e3d82af5d
